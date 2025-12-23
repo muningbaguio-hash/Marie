@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You Hun ❤️</title>
+
+<style>
+body {
+    background-color: #ffe6f0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+/* PASSWORD BOX */
+.hint {
+    text-align: center;
+    margin-top: 80px;
+}
+input {
+    padding: 10px;
+    width: 250px;
+    font-size: 16px;
+}
+button {
+    padding: 10px 20px;
+    background: #e60073;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* LETTER CARD */
+.box {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    display: none;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+h1 {
+    color: #e60073;
+}
+p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* HEART ANIMATION */
+.heart {
+    position: absolute;
+    color: pink;
+    font-size: 20px;
+    animation: float 5s linear infinite;
+}
+@keyframes float {
+    0% {
+        transform: translateY(100vh);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD -->
+<div class="hint" id="lock">
+    <h2>🔐 This letter is locked</h2>
+    <p><strong>Password hint:</strong><br>
+    “my favorite word I can say when I'm angry”</p>
+
+    <input type="password" id="password" placeholder="Enter password">
+    <br>
+    <button onclick="checkPassword()">Open Letter 💖</button>
+</div>
+
+<!-- LETTER -->
+<div class="box" id="letter">
+    <h1>Hi Babe ❤️</h1>
+
+    <!-- PICTURE -->
+    <img src="love.jpg" alt="Our Picture">
+
+    <p>
+        Thank you for loving me, even when sometimes my attitude is hard to understand
+        and I suddenly get mad at you. Just remember that I love you.
+    </p>
+
+    <p>
+        My patience may be small and I get upset easily, but deep inside,
+        my patience is actually big—I still try my best to understand,
+        even when things are hard to understand.
+    </p>
+
+    <p>
+        Thank you so much for taking me with you when you go out,
+        thank you for being proud of me, and thank you for showing me
+        that you truly love me.
+    </p>
+
+    <p>
+        You know, sometimes I get so angry that I feel like biting you 😅
+        but you still make it worse.
+    </p>
+
+    <p><strong>Love always,</strong><br>Your Girlfriend 💕</p>
+</div>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+/* PASSWORD */
+function checkPassword() {
+    const correctPassword =  "04"; // 👈 CHANGE THIS
+    const userPassword = Nikolasss document.getElementById("password").value;
+
+    if (userPassword === correctPassword) {
+        document.getElementById("lock").style.display = "none";
+        document.getElementById("letter").style.display = "block";
+        document.getElementById("music").play();
+        createHearts();
+    } else {
+        alert("Wrong password 😅 Try again.");
+    }
+}
+
+/* HEARTS */
+function createHearts() {
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+    }, 300);
+}
+</script>
+
+</body>
+</html>
